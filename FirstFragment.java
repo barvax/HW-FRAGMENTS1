@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.example.lec8exe.moduls.User;
 
 
-public class FirstFragment extends Fragment  {
+public class FirstFragment extends Fragment {
 
 
     public static final String USER = "param1";
@@ -35,15 +35,6 @@ public class FirstFragment extends Fragment  {
     String name;
     String age;
 
-//    public static FirstFragment newInstance(User param1) {
-//        FirstFragment fragment = new FirstFragment();
-//        Bundle args = new Bundle();
-//        args.putSerializable(USER, param1);
-//
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,32 +43,32 @@ public class FirstFragment extends Fragment  {
     }
 
     private void findViews(View view) {
-        etName=view.findViewById(R.id.et_name_first);
-        etAge=view.findViewById(R.id.et_age_first);
+        etName = view.findViewById(R.id.et_name_first);
+        etAge = view.findViewById(R.id.et_age_first);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        findViews( container);
+        findViews(container);
         return inflater.inflate(R.layout.fragment_first, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        etName=view.findViewById(R.id.et_name_first);
-        etAge=view.findViewById(R.id.et_age_first);
+        etName = view.findViewById(R.id.et_name_first);
+        etAge = view.findViewById(R.id.et_age_first);
         view.findViewById(R.id.btn_next_first).setOnClickListener(view1 -> {
-            name =  etName.getText().toString();
-            age =  etAge.getText().toString();
-            User user = new User(name,age);
+            name = etName.getText().toString();
+            age = etAge.getText().toString();
+            User user = new User(name, age);
 
-            NavController controller= Navigation.findNavController(view);
+            NavController controller = Navigation.findNavController(view);
             Bundle bundle = new Bundle();
             bundle.putSerializable(USER, user);
 
-            controller.navigate(R.id.action_firstFragment_to_secondFragment,bundle);
+            controller.navigate(R.id.action_firstFragment_to_secondFragment, bundle);
         });
     }
 }

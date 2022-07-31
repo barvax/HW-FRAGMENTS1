@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lec8exe.moduls.Animal;
+import com.example.lec8exe.moduls.GetData;
 import com.example.lec8exe.moduls.OnTextClickListener;
 import com.example.lec8exe.moduls.User;
 
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 public class SecondFragment extends Fragment implements OnTextClickListener {
 
     RecyclerView recyclerView;
-    Context context;
+
     ArrayList<Animal> animals;
     Animal currentAnimal;
     Bundle args;
@@ -43,8 +44,8 @@ public class SecondFragment extends Fragment implements OnTextClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MainActivity main = new MainActivity();
-        animals = main.getAnimals();
+        GetData data = new GetData();
+        animals = data.getAnimals();
 
     }
 
@@ -72,7 +73,7 @@ public class SecondFragment extends Fragment implements OnTextClickListener {
                 NavController controller = Navigation.findNavController(view);
                 controller.navigate(R.id.action_secondFragment_to_thirdFragment, args);
             }else{
-                Toast.makeText(context, "PICK AN ANIMAL", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "PICK AN ANIMAL", Toast.LENGTH_SHORT).show();
             }
 
         });

@@ -1,12 +1,10 @@
 package com.example.lec8exe;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +17,7 @@ import java.util.ArrayList;
 
 public class PetAdapter extends RecyclerView.Adapter<PetAdapter.AnimalViewHolder> {
     Context context;
-    ArrayList<Animal> animals= new ArrayList();
+    ArrayList<Animal> animals;
     OnTextClickListener listener;
     public PetAdapter(ArrayList<Animal> animals, OnTextClickListener listener) {
         this.animals = animals;
@@ -47,6 +45,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.AnimalViewHolder
     public void onBindViewHolder(@NonNull AnimalViewHolder holder, int position) {
         Animal animal = animals.get(position);
         holder.tvAnimalName.setText(animal.getName());
+        holder.tvAnimalType.setText(animal.getType());
         holder.tvAnimalName.setOnClickListener(view -> {
 
             Animal data = animals.get(position);
@@ -65,13 +64,16 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.AnimalViewHolder
 
     static class AnimalViewHolder extends RecyclerView.ViewHolder{
         TextView tvAnimalName;
+        TextView tvAnimalType;
         public AnimalViewHolder(@NonNull View itemView) {
             super(itemView);
             findViews();
         }
 
         private void findViews() {
-            tvAnimalName = itemView.findViewById(R.id.tv_animal_row);
+
+            tvAnimalName = itemView.findViewById(R.id.tv_animal_name);
+            tvAnimalType = itemView.findViewById(R.id.tv_animal_type);
         }
     }
 }

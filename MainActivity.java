@@ -12,10 +12,8 @@ import com.example.lec8exe.moduls.Animal;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    String[] animalType={"a","b","c","d","e","f","g","h","i","g"};
-    String[] animalName={"aa","bb","cc","dd","ee","ff","gg","hh","ii","gg"};
-    ArrayList<Animal> animals;
-    RecyclerView recyclerView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +23,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public ArrayList<Animal> getAnimals(){
-        animals=new ArrayList<>();
-        for (int i = 0; i < animalType.length; i++) {
-            Animal animal = new Animal(animalType[i],animalName[i]);
-            animals.add(animal);
-        }
-        return animals;
-    }
+
 }
