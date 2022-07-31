@@ -102,8 +102,8 @@ public class ThirdFragment extends Fragment {
 
               name.setText(user.getName());
               age.setText(user.getAge());
-            Toast.makeText(getContext(), mParam1, Toast.LENGTH_SHORT).show();
-//              animal.setText(user.getAnimal());
+
+              animal.setText(user.getAnimal().getName());
         }
 
         view.findViewById(R.id.btn_toast_third).setOnClickListener(view1 -> {

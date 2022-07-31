@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lec8exe.moduls.Animal;
+import com.example.lec8exe.moduls.OnTextClickListener;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,13 @@ import java.util.ArrayList;
 public class PetAdapter extends RecyclerView.Adapter<PetAdapter.AnimalViewHolder> {
     Context context;
     ArrayList<Animal> animals= new ArrayList();
+    OnTextClickListener listener;
+    public PetAdapter(ArrayList<Animal> animals, OnTextClickListener listener) {
+        this.animals = animals;
+        this.listener = listener;
+    }
+
+
 
     public PetAdapter(ArrayList<Animal> animals) {
         this.animals = animals;
@@ -41,11 +49,8 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.AnimalViewHolder
         holder.tvAnimalName.setText(animal.getName());
         holder.tvAnimalName.setOnClickListener(view -> {
 
-            ThirdFragment.newInstance("test1","test2");
-            Toast.makeText(context, ThirdFragment.ARG_PARAM1, Toast.LENGTH_SHORT).show();
-//            Intent intent = new Intent(context ,MainActivity.class);
-////            intent.putExtra("ANIMAL" , holder.tvAnimalName.toString());
-////            Toast.makeText(context, holder.tvAnimalName.getText().toString(), Toast.LENGTH_SHORT).show();
+            Animal data = animals.get(position);
+            listener.onTextClick(data);
         });
 
     }
